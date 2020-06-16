@@ -241,7 +241,7 @@ class RoleController extends Controller
 
         $headers = [
                 'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0'
-            ,   'Content-type'        => 'text/csv'
+            ,   'Content-type'        => 'text/csv; charset=UTF-8'
             ,   'Content-Disposition' => 'attachment; filename=Perfis_' .  date("Y-m-d H:i:s") . '.csv'
             ,   'Expires'             => '0'
             ,   'Pragma'              => 'public'
@@ -278,7 +278,7 @@ class RoleController extends Controller
             $FH = fopen('php://output', 'w');
             fputs($FH, $bom = ( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
             foreach ($list as $row) {
-                fputcsv($FH, $row, chr(9));
+                fputcsv($FH, $row, chr(59));
             }
             fclose($FH);
         };
